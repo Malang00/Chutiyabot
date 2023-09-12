@@ -1,4 +1,4 @@
-# PYRO BOT
+# CHUTIYA BOT
 
 ## Deploy To Heroku
 
