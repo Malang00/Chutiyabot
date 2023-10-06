@@ -461,7 +461,7 @@ async def txt_handler(bot: Client, m: Message):
             urlx = links[i].split('://', 1)[1].split(' ', 1)[0] if '://' in links[i] else 'nolinkfound'
             urly =  'https://'  + urlx if urlx != 'nolinkfound' else 'NoLinkFound'
             urlm = urly.replace('"', '').replace(',', '').replace('(','').replace(')','').strip()
-            url = urly.replace('"', '').replace(',', '').replace('(','').replace(')','').replace("d1d34p8vz63oiq", "d26g5bnklkwsh4").replace("pw2.pc.cdn.bitgravity.com","d26g5bnklkwsh4.cloudfront.net").replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","").replace("d3nzo6itypaz07", "d26g5bnklkwsh4").replace("dn6x93wafba93", "d26g5bnklkwsh4").replace("d2tiz86clzieqa", "d26g5bnklkwsh4").replace("vod.teachx.in", "d3igdi2k1ohuql.cloudfront.net").replace("downloadappx.appx.co.in", "d33g7sdvsfd029.cloudfront.net").strip()
+            url = urly.replace('"', '').replace(',', '').replace('(','').replace(')','').replace("d1d34p8vz63oiq", "d26g5bnklkwsh4").replace("pw2.pc.cdn.bitgravity.com","d26g5bnklkwsh4.cloudfront.net").replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","").replace("d3nzo6itypaz07", "d26g5bnklkwsh4").replace("dn6x93wafba93", "d26g5bnklkwsh4").replace("d2tiz86clzieqa", "d26g5bnklkwsh4").replace("vod.teachx.in", "d3igdi2k1ohuql.cloudfront.net").replace("downloadappx.appx.co.in", "d33g7sdvsfd029.cloudfront.net").replace("cdn.jwplayer.com/manifests/", "d3igdi2k1ohuql.cloudfront.net/videos/").strip()
             parsed_url = urlparse(url)
             namex = links[i].strip().replace(urlm,'') if '://' in links[i].strip() and links[i].strip().replace(url,'') !='' else parsed_url.path.split('/')[-1]
             nameeex = namex if namex != '' and 'NoLinkFound' else 'NA'
@@ -484,13 +484,13 @@ async def txt_handler(bot: Client, m: Message):
                 url = url.replace('-nocookie', '')
             elif "d9an9suwcevit" in url:
 
-            	 urlx = url.replace("master.m3u8", "master_tunak_tunak_tun.m3u8")
+            	 urlx = url.replace("master.m3u8", "master_tunak_tunak_tun.m3u8").replace(".m3u8", "-5S4ICibK.mp4")
 
             	 response = requests.get(urlx)
 
             	 if response.status_code != 200:
 
-            	 	url = url.replace("master_tunak_tunak_tun.m3u8", "master.m3u8")
+            	 	url = url.replace("master_tunak_tunak_tun.m3u8", "master.m3u8").replace("-5S4ICibK.mp4", ".m3u8")
 
             	 else:
 
