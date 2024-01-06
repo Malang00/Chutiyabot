@@ -508,7 +508,7 @@ async def txt_handler(bot: Client, m: Message):
             try:
                 Show = f"**Trying To Download:-**\n\n**Name :** `{name}`\n**Quality :** `{res}`\n\n**Piracy is illegal 🚫"
                 prog = await m.reply_text(Show)
-                cc = f'**{str(count).zfill(3)}\n**File Name : **{name}.mkv\n**Batch : **{b_name}\n\n**Downloaded By : {creditx}**'
+                cc = f'**{str(count).zfill(3)} {name}.mkv\n\n**Batch : **{b_name}\n\n**Downloaded By : {creditx}**'
                 if cmd == "pdf" in url or ".pdf"  in url or "drive"  in url:
                     try:
                         ka=await helper.aio(url,name)
@@ -539,7 +539,7 @@ async def txt_handler(bot: Client, m: Message):
                 await m.reply_text(f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - `{urlm}`")
                 if "NoLinkFound" != url:
                  count+=1
-                await bot.send_message(log_channel, f"**Failed To Download ❌**\n**Name** - {name}\n**Link** - {url}\n**Error** - `{e}`")
+                await bot.send_message(log_channel, f"**Failed To Download ❌**\n\n**Name** : {name}\n\n**Link** : {url}\n**Error** - `{e}`")
                 time.sleep(20)
                 continue
     except Exception as e:
