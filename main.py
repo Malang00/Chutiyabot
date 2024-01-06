@@ -514,7 +514,7 @@ async def txt_handler(bot: Client, m: Message):
                         ka=await helper.aio(url,name)
                         await prog.delete (True)
                         time.sleep(1)
-                        reply = await m.reply_text(f"Trying To Upload - `{name}`")
+                        reply = await m.reply_text(f"Trying To Upload : `{name}`")
                         time.sleep(1)
                         copy = await bot.send_document(chat_id = m.chat.id, document = ka, caption=f'**Index: ** {str(count).zfill(3)}\n**File Name : ** {name}.pdf\n**Batch : ** {b_name}\n\n{creditx}')
                         await copy.copy(chat_id = log_channel)
