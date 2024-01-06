@@ -397,10 +397,10 @@ async def txt_handler(bot: Client, m: Message):
     raw_text = input1.text
     await input1.delete(True)
     
-    await editable.edit("**Enter Batch Name or send `df` for grebbing it from txt.**")
+    await editable.edit("**Enter Batch Name or send `d` for grebbing it from txt.**")
     input0: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
     raw_text0 = input0.text 
-    if raw_text0 == 'df':
+    if raw_text0 == 'd':
         b_name = file_name
     else:
         b_name = raw_text0
@@ -426,16 +426,16 @@ async def txt_handler(bot: Client, m: Message):
             res = "UN"
     except Exception:
             res = "UN"
-    await editable.edit("**Enter Caption or send `df` for default or just /skip**")    
+    await editable.edit("**Enter Caption or send `d` for default or just /skip**")    
     input7: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
     raw_text7 = input7.text 
-    if raw_text7 == 'df':
+    if raw_text7 == 'd':
         creditx = credit
     elif raw_text7 == '/skip':
         creditx = ''
     elif raw_text7 == '/skip@drmsupdlBot':
     	creditx = ''
-    elif raw_text7 == '/skip@drmsupdlBot ':
+    elif raw_text7 == '/skip@drmsupdlBot':
     	creditx = ''
     else:
         creditx = raw_text7
@@ -508,7 +508,7 @@ async def txt_handler(bot: Client, m: Message):
             try:
                 Show = f"**Trying To Download:-**\n\n**Name :** `{name}`\n**Quality :** `{res}`\n\n**Piracy is illegal 🚫"
                 prog = await m.reply_text(Show)
-                cc = f'**Index: **{str(count).zfill(3)}\n**File Name : **{name}.mkv\n**Batch : **{b_name}\n\n**{creditx}**'
+                cc = f'**{str(count).zfill(3)}\n**File Name : **{name}.mkv\n**Batch : **{b_name}\n\n**Downloaded By : {creditx}**'
                 if cmd == "pdf" in url or ".pdf"  in url or "drive"  in url:
                     try:
                         ka=await helper.aio(url,name)
