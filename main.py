@@ -507,7 +507,7 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'               
             try:
-                Show = f"**Trying To Download:-**\n\n**Name :** `{name}`\n**Quality :** `{res}`\n\n**Piracy is illegal 🚫"
+                Show = f"**Trying To Download:-**\n\n**Name :** `{name}`\n**Quality :** `{res}`\n\n**⌈ 𝐌𝐚𝐝𝐞 𝐁𝐲 𝐉𝐀𝐀𝐓 ⌋**"
                 prog = await m.reply_text(Show)
                 cc = f'**{str(count).zfill(3)}. {name}.mkv**\n\n**Batch :** {b_name}\n\n**Downloaded By : {creditx}**'
                 if cmd == "pdf" in url or ".pdf"  in url or "drive"  in url:
