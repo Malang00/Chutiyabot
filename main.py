@@ -508,7 +508,7 @@ async def txt_handler(bot: Client, m: Message):
             try:
                 Show = f"**Trying To Download**\n\n**Name : ** `{name}`\n**Quality : ** `{res}`\n\n**⌈ 𝐌𝐚𝐝𝐞 𝐁𝐲 𝐉𝐀𝐀𝐓 ⌋**"
                 prog = await m.reply_text(Show)
-                cc = f'** {str(count).zfill(3)}.** {name}.mkv\n\n**Batch : **{b_name}\n\n**Downloaded By : {creditx}**'
+                cc = f'** {str(count).zfill(3)}.** {name}.mkv\n\n**Batch Name : **{b_name}\n\n**Downloaded By : {creditx}**'
                 if cmd == "pdf" in url or ".pdf"  in url or "drive"  in url:
                     try:
                         ka=await helper.aio(url,name)
@@ -516,7 +516,7 @@ async def txt_handler(bot: Client, m: Message):
                         time.sleep(1)
                         reply = await m.reply_text(f"Trying To Upload : `{name}`")
                         time.sleep(1)
-                        copy = await bot.send_document(chat_id = m.chat.id, document = ka, caption=f'** {str(count).zfill(3)}. **{name}.pdf\n\n**Batch : **{b_name}\n\n**Downloaded By : {creditx}**')
+                        copy = await bot.send_document(chat_id = m.chat.id, document = ka, caption=f'** {str(count).zfill(3)}. **{name}.pdf\n\n**Batch Name : **{b_name}\n\n**Downloaded By : {creditx}**')
                         await copy.copy(chat_id = log_channel)
                         count+=1
                         await reply.delete (True)
