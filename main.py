@@ -536,10 +536,10 @@ async def txt_handler(bot: Client, m: Message):
                     time.sleep(1)
             except Exception as e:
                 logging.error(e)
-                await m.reply_text(f"**Failed To Download ❌**\n\n**Name** : {name}\n**Link** : `{urlm}`")
+                await m.reply_text(f"**Failed To Download ❌**\n\n**Name** : {str(count).zfill(3)}. {name}\n**Link** : `{urlm}`")
                 if "NoLinkFound" != url:
                  count+=1
-                await bot.send_message(log_channel, f"**Failed To Download ❌**\n\n**Name** : {name}\n**Link** : {url}\n**Error** : `{e}`")
+                await bot.send_message(log_channel, f"**Failed To Download ❌**\n\n**Name** : {str(count).zfill(3)}. {name}\n**Link** : {url}\n**Error** : `{e}`")
                 time.sleep(20)
                 continue
     except Exception as e:
