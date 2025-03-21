@@ -6,7 +6,6 @@ ffmpeg
 tgcrypto
 requests
 pyromod==1.5
-aiohttp
 aiofiles
 humansize
 opencv-python-headless
