@@ -363,35 +363,47 @@ async def run_bot(bot: Client, m: Message):
         await m.reply_document(document=txt_file,caption="Here is your txt file.")
         os.remove(txt_file)
         
-@bot.on_message(filters.command(["txt"])&(filters.chat(auth_users)))
+@bot.on_message(filters.command(["txt"]) & filters.chat(auth_users))
 async def txt_handler(bot: Client, m: Message):
+    if batch:  # Check if batch is not empty
+        await m.reply("A Process Is Already Running", quote=True)
+        return
     
-    if batch != []:
-        await m.reply("**⚠️ One Process Is Already Running**", quote=True)
-        return
-    else:
-        batch.append(f'{m.from_user.id}')
-        editable  = await m.reply_text("Send links listed in a txt file in format **Name:link**") 
-    input0: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
-    x = await input0.download()
-    await bot.send_document(log_channel, x)
-    await input0.delete(True)
-    file_name, ext = os.path.splitext(os.path.basename(x))
-    credit = "Downloaded by " + f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-    try:         
+    batch.append(str(m.from_user.id))  # Store user ID as string
+    editable = await m.reply_text("Send links listed in a txt file in format Name::link")
+    
+    try:
+        # Listen for document from the same user
+        input_msg: Message = await bot.listen(
+            editable.chat.id, 
+            filters.user(m.from_user.id) & filters.document
+        )
+        
+        # Download the file
+        x = await input_msg.download()
+        await bot.send_document(log_channel, x)
+        await input_msg.delete(True)
+        
+        # Process the file
+        file_name, ext = os.path.splitext(os.path.basename(x))
+        credit = f"Downloaded by [{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+        
         with open(x, "r") as f:
-             content = f.read()
-             content = content.split("\n")
-        links = []
-        for i in content:
-           if i != '':
-                 links.append(i)
+            content = f.read()
+            links = [i for i in content.split("\n") if i.strip()]
+            
         os.remove(x)
+        
+        # Process links here...
+        
     except Exception as e:
-        logging.error(e)
-        await m.reply_text("Invalid file input ❌.")
-        os.remove(x)
-        return
+             logger.error(e)
+             await m.reply_text("Invalid file input")
+             os.remove(x)
+             return
+    finally:
+        if str(m.from_user.id) in batch:
+            batch.remove(str(m.from_user.id))
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input1: Message = await bot.listen(editable.chat.id, filters.user(m.from_user.id))
     raw_text = input1.text
